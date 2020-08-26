@@ -1,26 +1,39 @@
 body{
     background-color: black;
     color: white;
+    font-family: Helvetica, san-serif;
 }
 
 
 main{
     display : grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 2fr)); /* Keep adding new columns - even if theres is no content for them. content does not always take up full width */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 1rem;
-    font-family: Avenir, Roboto, Helvetica, san-serif;
-    font-size: 0.8rem;
-    margin: 0;
+    font-size: 1rem;
+    margin: 10rem;
 }
 article{
-    border: 1px solid red ;
+    border: 2px solid red ;
     border-radius: 1rem;
 
+}
+.soldo:hover{
+    filter: grayscale(100%);
+    cursor:default;
+}
+
+.vegana:hover{
+    border: 2px solid green;
 }
 img{
     border-radius: 2rem;
     width: 100%;
     height: auto;
+}
+.price{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    align-items: flex-end;
 }
 
 article {
