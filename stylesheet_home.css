@@ -1,0 +1,54 @@
+body{
+    background-color: black;
+    color: white;
+}
+
+
+main{
+    display : grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 2fr)); /* Keep adding new columns - even if theres is no content for them. content does not always take up full width */
+    grid-gap: 1rem;
+    font-family: Avenir, Roboto, Helvetica, san-serif;
+    font-size: 0.8rem;
+    margin: 0;
+}
+article{
+    border: 1px solid red ;
+    border-radius: 1rem;
+
+}
+img{
+    border-radius: 2rem;
+    width: 100%;
+    height: auto;
+}
+
+article {
+    display: flex;
+    flex-flow: column;
+}
+
+article > img {
+    order: -1;
+    align-self: flex-end;
+}
+
+article {
+    padding: 2rem;
+}
+h1 {
+    text-align: center;
+}
+.content{
+    margin-bottom: 2rem;
+}
+
+article > button{
+    margin-top: auto;
+    background: yellow;
+    color: red;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+}
