@@ -19,15 +19,20 @@ function showproduct(product) {
 
     const copy = templ.cloneNode(true);
 
-    copy.querySelector("h1").textContent = product.name;
+    const h1 = copy.querySelector("h1");
+    h1.textContent = product.name;
     copy.querySelector("span").textContent = product.price;
-    copy.querySelector(".discount").textContent =  "discount: " + product.discount;
+    if (product.discount >0 ){
+        copy.querySelector(".discount").textContent =  "discount: " + product.discount;
+    }
+
     copy.querySelector(".descript").textContent =  product.shortdescription;
     if (product.soldout == true ) {
         copy.querySelector("article").classList.add("soldo");
     }
     if (product.vegetarian == true ) {
         copy.querySelector("article").classList.add("vegana");
+        h1.textContent += " (V)";
     }
 
 

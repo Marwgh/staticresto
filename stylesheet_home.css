@@ -2,25 +2,38 @@ body{
     background-color: black;
     color: white;
     font-family: Helvetica, san-serif;
+
+
+
 }
 
 
 main{
 
+    margin: 0 auto;
+    width: 90%;
+
 }
 section{
     display : grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /*grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));*/
     grid-gap: 1rem;
     font-size: 1rem;
-    margin: 10rem;
+    margin: 5vw;
 }
 article{
-    border: 2px solid red ;
-    border-radius: 1rem;
+    border-top: 1px solid  ;
+    border-bottom: 1px solid  ;
+    border-color: hsl(0, 70%, 63%);
     display: flex;
     flex-flow: column;
 
+}
+
+article:hover{
+    border: 1px solid red ;
+    border-radius: 1rem;
+    border-color: hsl(0, 70%, 63%);
 }
 .soldo:hover{
     filter: grayscale(100%);
@@ -69,4 +82,11 @@ article > button{
     border: none;
     border-radius: 1rem;
     font-size: 1.2rem;
+}
+
+@media all and (min-width: 599px){
+    article{
+    margin: 0 auto;
+        width: 40vw;
+    }
 }
