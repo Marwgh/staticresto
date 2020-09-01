@@ -2,24 +2,45 @@ body{
     background-color: black;
     color: white;
     font-family: Helvetica, san-serif;
-
-
-
 }
-
-
+header{
+    background-color: aliceblue;
+    width: 100%;
+    grid-area: hd;
+}
+span{
+    font-size: 1.2em;
+}
+.discount{
+    text-decoration: line-through;
+    color: dimgrey;
+}
+aside{
+    display: flex;
+    width: 100%;
+    margin: 5em auto;
+    grid-area: ad;
+    position: fixed;
+}
+li{
+    padding: 1em 1em 1em 1em;
+}
+li a {
+    decoration: none;
+    font-size: 1em;
+    width: 100%;
+}
 main{
-
     margin: 0 auto;
     width: 90%;
-
+    grid-area: mn;
 }
 section{
     display : grid;
     /*grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));*/
     grid-gap: 1rem;
     font-size: 1rem;
-    margin: 5vw;
+    margin: 1vw;
 }
 article{
     border-top: 1px solid  ;
@@ -35,9 +56,9 @@ article:hover{
     border-radius: 1rem;
     border-color: hsl(0, 70%, 63%);
 }
-.soldo:hover{
+.soldo{
     filter: grayscale(100%);
-    cursor:default;
+    visibility: hidden;
 }
 
 .vegana:hover{
@@ -68,7 +89,10 @@ article {
     padding: 2rem;
 }
 h1 {
-    text-align: center;
+    color: yellow;
+}
+article > h1 {
+    color: white;
 }
 .content{
     margin-bottom: 2rem;
@@ -85,8 +109,21 @@ article > button{
 }
 
 @media all and (min-width: 599px){
+    body {
+        display: grid;
+        grid-template-columns: 1fr 4fr 1fr;
+        grid-template-areas:
+            "hd hd hd"
+            "ad mn mn"
+            "ad mn mn"
+            "nav nav nav";
+
+    }
     article{
-    margin: 0 auto;
-        width: 40vw;
+    margin: 0 ;
+    width: 40vw;
+    }
+    h1{
+
     }
 }

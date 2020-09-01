@@ -21,9 +21,12 @@ function showproduct(product) {
 
     const h1 = copy.querySelector("h1");
     h1.textContent = product.name;
-    copy.querySelector("span").textContent = product.price;
+
     if (product.discount >0 ){
-        copy.querySelector(".discount").textContent =  "discount: " + product.discount;
+        copy.querySelector("span").textContent = product.price-(product.price * product.discount*0.01) +"dkr" ;
+        copy.querySelector(".discount").textContent = product.price +"dkr" ;
+    } else {
+        copy.querySelector("span").textContent = product.price +"dkr";
     }
 
     copy.querySelector(".descript").textContent =  product.shortdescription;
