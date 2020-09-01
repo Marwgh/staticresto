@@ -4,10 +4,33 @@ body{
     font-family: Helvetica, san-serif;
 }
 header{
-    background-color: aliceblue;
     width: 100%;
     grid-area: hd;
+    display: flex;
+    flex-flow:column;
 }
+html{
+    scroll-behavior: smooth;
+}
+
+nav  {
+    margin: auto;
+    align-content: center;
+
+}
+nav a {
+    margin: auto;
+    align-content: center;
+    padding: 1em 1em 1em 1em;
+    text-decoration: none;
+    color: white;
+    font-size: 1.4em;
+}
+
+nav a:hover {
+    font-size: 1.5em;
+}
+
 span{
     font-size: 1.2em;
 }
@@ -25,13 +48,14 @@ aside{
 li{
     padding: 1em 1em 1em 1em;
 }
+
 li a {
     decoration: none;
     font-size: 1em;
     width: 100%;
 }
 main{
-    margin: 0 auto;
+    margin: 5em auto;
     width: 90%;
     grid-area: mn;
 }
@@ -45,7 +69,7 @@ section{
 article{
     border-top: 1px solid  ;
     border-bottom: 1px solid  ;
-    border-color: hsl(0, 70%, 63%);
+    border-color: hsl(0, 20%, 23%);
     display: flex;
     flex-flow: column;
 
@@ -54,20 +78,21 @@ article{
 article:hover{
     border: 1px solid red ;
     border-radius: 1rem;
-    border-color: hsl(0, 70%, 63%);
+    border-color: hsl(0, 20%, 23%);
 }
 .soldo{
     filter: grayscale(100%);
-    visibility: hidden;
+    display: none;
 }
 
 .vegana:hover{
-    border: 2px solid green;
+    border: 1px solid green;
 }
 img{
     border-radius: 2rem;
     width: 100%;
     height: auto;
+    float: right;
 }
 .price{
     margin-top: 1rem;
@@ -81,18 +106,26 @@ article {
 }
 
 article > img {
-    order: -1;
     align-self: flex-end;
 }
 
 article {
     padding: 2rem;
+    display : grid;
+    grid-template-columns: 1fr 1fr;
 }
-h1 {
+section>h1 {
     color: yellow;
+    font-size: 150%;
 }
+
+h1::first-letter{
+    text-transform: uppercase;
+}
+
 article > h1 {
     color: white;
+    margin: 0 auto;
 }
 .content{
     margin-bottom: 2rem;
@@ -111,7 +144,7 @@ article > button{
 @media all and (min-width: 599px){
     body {
         display: grid;
-        grid-template-columns: 1fr 4fr 1fr;
+        grid-template-columns: 0.7fr 4fr 1fr;
         grid-template-areas:
             "hd hd hd"
             "ad mn mn"
