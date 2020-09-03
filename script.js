@@ -1,22 +1,20 @@
-function init(){
+function init() {
     fetch("https://kea-alt-del.dk/t5/api/categories").then(r => r.json()).then(
-    function (data){
-        categoriesReceived(data)
-    }
+        function (data) {
+            categoriesReceived(data)
+        }
     )
 }
 init();
 
-function categoriesReceived (cats){
+function categoriesReceived(cats) {
     createNavigation(cats);
     createSections(cats);
 
 }
 
-
-
-function  createSections (categories){
-    categories.forEach(categorie =>{
+function createSections(categories) {
+    categories.forEach(categorie => {
         const sect = document.createElement("section");
         sect.setAttribute("id", categorie);
         const h1 = document.createElement("h1");
@@ -26,34 +24,29 @@ function  createSections (categories){
     })
 }
 
-function createNavigation(categories){
-    categories.forEach(cat =>{
+function createNavigation(categories) {
+    categories.forEach(cat => {
         console.log(cat)
         const a = document.createElement("a");
-        a.textContent=cat
-        a.setAttribute("href",`#${cat}`);
+        a.textContent = cat
+        a.setAttribute("href", `#${cat}`);
         document.querySelector("nav").appendChild(a);
     })
     fetch("https://kea-alt-del.dk/t5/api/productlist")
-.then(function(response){
-    console.log("response")
-    return response.json();
-})
-.then (function(data){
-    console.log(data)
-    datareceived(data);
-})
+        .then(function (response) {
+            console.log("response")
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data)
+            datareceived(data);
+        })
 
-function datareceived(product){
-    product.forEach(showproduct);
+    function datareceived(product) {
+        product.forEach(showproduct);
+    }
+
 }
-
-}
-
-
-
-
-
 
 function showproduct(product) {
     const templ = document.querySelector("#Template").content;
@@ -63,23 +56,29 @@ function showproduct(product) {
     const h1 = copy.querySelector("h1");
     h1.textContent = product.name;
     const img = copy.querySelector(".productImg");
-    img.setAttribute('src',`https://kea-alt-del.dk/t5/site/imgs/small/` +product.image + `-sm.jpg`)
+    img.setAttribute('src', `https://kea-alt-del.dk/t5/site/imgs/small/` + product.image + `-sm.jpg`);
 
-    if (product.discount >0 ){
-        copy.querySelector("span").textContent = product.price-(product.price * product.discount*0.01) +"dkr" ;
-        copy.querySelector(".discount").textContent = product.price +"dkr" ;
+    if (product.discount > 0) {
+        copy.querySelector("span").textContent = product.price - (product.price * product.discount * 0.01) + "dkr";
+        copy.querySelector(".discount").textContent = product.price + "dkr";
     } else {
-        copy.querySelector("span").textContent = product.price +"dkr";
+        copy.querySelector("span").textContent = product.price + "dkr";
     }
 
-    copy.querySelector(".descript").textContent =  product.shortdescription;
-    if (product.soldout == true ) {
+    copy.querySelector(".descript").textContent = product.shortdescription;
+    if (product.soldout == true) {
         copy.querySelector("article").classList.add("soldo");
     }
-    if (product.vegetarian == true ) {
+    if (product.vegetarian == true) {
         copy.querySelector("article").classList.add("vegana");
         h1.textContent += " (V)";
     }
+
+    copy.querySelector("button").addEventListener("click", () => {
+        fetch(`https://kea-alt-del.dk/t5/api/product?id=${product.id}`)
+            .then(res => res.json())
+            .then(showDetails);
+    });
 
 
     if (product.category == "starter") {
@@ -90,12 +89,26 @@ function showproduct(product) {
         document.querySelector("#drinks").appendChild(copy);
     } else if (product.category == "dessert") {
         document.querySelector("#dessert").appendChild(copy);
-    }else if (product.category == "sideorders") {
+    } else if (product.category == "sideorders") {
         document.querySelector("#sideorders").appendChild(copy);
     }
 
 }
 
+
+const modal = document.querySelector(".modal-background");
+modal.addEventListener("click", () => {
+    modal.classList.add("hide");
+});
+
+
+function showDetails(data) {
+    modal.querySelector(".modal-name").textContent = data.name;
+    modal.querySelector(".modal-description").textContent = data.longdescription;
+    modal.querySelector(".modal-price").textContent = "Price :" + data.price;
+    modal.querySelector(".modal-image").setAttribute('src', `https://kea-alt-del.dk/t5/site/imgs/medium/` + data.image + `-md.jpg`);
+    modal.classList.remove("hide");
+}
 
 /*
 copy.querySelector("img").src= product.image;
