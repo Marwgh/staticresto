@@ -73,6 +73,9 @@ function showproduct(product) {
         copy.querySelector("article").classList.add("vegana");
         h1.textContent += " (V)";
     }
+    if (product.alcohol > 0) {
+        copy.querySelector("article").classList.add("alcoholic");
+    }
 
     copy.querySelector("button").addEventListener("click", () => {
         fetch(`https://kea-alt-del.dk/t5/api/product?id=${product.id}`)
@@ -105,9 +108,40 @@ modal.addEventListener("click", () => {
 function showDetails(data) {
     modal.querySelector(".modal-name").textContent = data.name;
     modal.querySelector(".modal-description").textContent = data.longdescription;
-    modal.querySelector(".modal-price").textContent = "Price :" + data.price;
+    if (data.discount > 0) {
+        modal.querySelector(".modal-price").textContent = data.price - (data.price * data.discount * 0.01) + "dkr";
+        modal.querySelector(".discount").textContent = data.price + "dkr";
+    } else {
+        modal.querySelector(".modal-price").textContent = data.price + "dkr";
+    }
     modal.querySelector(".modal-image").setAttribute('src', `https://kea-alt-del.dk/t5/site/imgs/medium/` + data.image + `-md.jpg`);
     modal.classList.remove("hide");
+}
+
+const veggiefilter = document.querySelector("#veggiefilter");
+veggiefilter.addEventListener("click", veggieFilterClicked);
+
+function veggieFilterClicked() {
+  veggiefilter.classList.toggle("active");
+  //b select all non veggie
+  const articles = document.querySelectorAll("article:not(.vegana)");
+  //console.log(articles)
+  articles.forEach(elem => {
+    elem.classList.toggle("hidden")
+  })
+}
+
+const alcoholfilter = document.querySelector("#alcoholfilter");
+alcoholfilter.addEventListener("click", alcoholFilterClicked);
+
+function alcoholFilterClicked() {
+  alcoholfilter.classList.toggle("active");
+  //b select all non veggie
+  const articles = document.querySelectorAll("article.alcoholic");
+  //console.log(articles)
+  articles.forEach(elem => {
+    elem.classList.toggle("hidden")
+  })
 }
 
 /*

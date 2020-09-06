@@ -5,22 +5,34 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylesheet_home.css">
+    <link rel="icon" href="svg/logopa.svg">
     <title></title>
 </head>
 
+
+
 <body>
+    <div class="topnav">
+    <img src="svg/logo.svg" alt="icon">
+    <div class="topnav-right">
+        <a href="">Tutorial</a>
+        <a href="">Facts</a>
+    </div>
+</div>
     <header>
-        <nav></nav>
+        <nav>
+
+        </nav>
     </header>
     <aside>
         <details>
             <summary>Filters :</summary>
-            <li><a>Non-alcohoolic</a></li>
+            <li id="alcoholfilter"><a >Non-alcohoolic</a></li>
+            <li id="veggiefilter"><a>Vegie</a></li>
             <li><a>buStarters</a></li>
             <li><a>Drinks</a></li>
             <li><a>Mains</a></li>
             <li><a>Desserts</a></li>
-            <li><a>Vegie</a></li>
             <li><a>Discount</a></li>
         </details>
     </aside>
@@ -36,7 +48,7 @@
                 <p class="descript"></p>
             </div>
             <img class="productImg" src="">
-            <button> + </button>
+            <button> +add to order </button>
         </article>
     </template>
 
@@ -45,10 +57,11 @@
 <div class="modal-background hide">
     <div class="modal-content">
         <img src="" alt="" class="modal-image" />
-        <h3 class="modal-name">NAME</h3>
+        <h2 class="modal-name">NAME</h2>
 
         <p class="modal-description">LONG DESCRIPTION</p>
-        <h4 class="modal-price">PRICE</h4>
+        <h3 class="modal-price">PRICE</h3>
+        <p class="discount"></p>
     </div>
 </div>
 
